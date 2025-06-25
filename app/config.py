@@ -12,7 +12,7 @@ class Settings(BaseSettings):
     DB_PASSWORD: str
 
     # API settings
-    DB_USAGE: bool = True
+    DB_USAGE: bool
     API_VERSION: str
 
     model_config = SettingsConfigDict(

@@ -27,20 +27,20 @@ async def mock_endpoint():
 async def get_mock_data():
     return {"message": "This is mock data", "status": status.HTTP_200_OK}
 
-if settings.DB_USAGE:
-    @router.get("/health")
-    async def health_check():
-        try:
-            conn = psycopg2.connect(
-                host=settings.DB_HOST,
-                database=settings.DB_NAME,
-                user=settings.DB_USER,
-                password=settings.DB_PASSWORD
-            )
-            conn.close()
-            return {"database": "connected", "status": status.HTTP_200_OK}
-        except Exception as e:
-            raise HTTPException(
-                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-                detail={"database": "disconnected", "error": str(e)}
-            )
+
+@router.get("/health")
+async def health_check():
+    try:
+        conn = psycopg2.connect(
+            host=settings.DB_HOST,
+            database=settings.DB_NAME,
+            user=settings.DB_USER,
+            password=settings.DB_PASSWORD
+        )
+        conn.close()
+        return {"database": "connected", "status": status.HTTP_200_OK}
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail={"database": "disconnected", "error": str(e)}
+        )
