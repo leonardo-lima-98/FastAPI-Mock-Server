@@ -27,7 +27,7 @@ FastAPI Mock Server/
 │ ├── main.py # Ponto de entrada do FastAPI
 │ └── routes.py # Rotas da API
 |
-├── .env.example # Variáveis de ambiente (DATABASE caso seja usado)
+├── .env.example # Variáveis de ambiente (DB_USAGE=True caso seja usado)
 ├── requirements.txt # Dependências Python
 └── run.sh # Script para rodar com Uvicorn com Reload para testes locais
 ```
@@ -45,19 +45,16 @@ Execute o servidor com:
 ```
 
 ## 📌 Endpoints disponíveis
-Método	Rota	Descrição
-GET	/mock/data	Retorna dados mockados em JSON
-GET	/health	Verifica conexão com o banco
-
-| Método | Rota | Descrição |
-| :-------: | :---- | :---------- |
-| GET        | / | Messagem de Boas-Vindas |
-| GET        | /info | Retorna informações gerais da aplicação |
-| GET        | /mock | Redireciona para a rota de dados |
+| Método     | Rota       | Descrição |
+| :--------: | :--------- | :---------- |
+| GET        | /          | Messagem de Boas-Vindas |
+| GET        | /info      | Retorna informações gerais da aplicação |
+| GET        | /mock      | Redireciona para a rota de dados |
 | GET        | /mock/data | Retorna os dados |
-| GET        | /health | Retorna a saude da conexao com o DB |
+| GET        | /health    | Retorna a saude da conexao com o DB |
 
 ## ☁️ Implantação no Azure App Service
 Este servidor pode ser implantado diretamente no Azure App Service como backend temporário/mock para testes. Você pode configurar variáveis de ambiente no portal do Azure, caso deseje testar o health check.
 
-## ⚠️ Atenção: este projeto não possui autenticação ou persistência. É destinado apenas para testes e validação funcional.
+# ⚠️ Atenção: 
+### Este projeto não possui autenticação ou persistência. É destinado apenas para testes e validação funcional.
