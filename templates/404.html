@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Erro 404</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="" />
+<meta name="author" content="http://webthemez.com" />
+<!-- css -->
+<link href="{{ url_for('static', path='css/bootstrap.min.css') }}" rel="stylesheet" />
+<link href="{{ url_for('static', path='css/fancybox/jquery.fancybox.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', path='css/flexslider.css') }}" rel="stylesheet" />
+<link href="{{ url_for('static', path='css/style.css') }}" rel="stylesheet" />
+<link rel="shortcut icon" href="{{ url_for('static', path='favicon.ico') }}" type="image/x-icon">
+</head>
+<body>
+<body style="display: flex; flex-direction: column; align-items: center; margin: 20px; gap: 15px;">
+    <h1>Erro 404 - Página não encontrada</h1>
+    <p>Desculpe, a página que você procura não existe.</p>
+    <a href="{{ url_for('home') }}">Voltar para a home</a>
+    <div > <img src="{{ url_for('static', path='img/low-poly01.jpg') }}" alt=""></div>
+</body>
+</html>

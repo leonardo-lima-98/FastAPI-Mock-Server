@@ -709,10 +709,6 @@ form#commentform textarea {
 	display: block;	
 }
 
-.work-nav #filters li a:hover {
-
-}
-
 .work-nav #filters li a.selected {
 	color: #DE5E60;
 }
@@ -1199,9 +1195,6 @@ border: 1px solid #e6e6e6;
 	display:block;
 	color:#fff;
 }
-.pricing-box-item.activeItem .pricing-heading h3 {
-	 
-}
 
 .pricing-box-item .pricing-heading h3 strong {
 	font-size:28px;
@@ -1445,7 +1438,7 @@ article img.pull-right, article .align-right{
 	float:right;
 	margin:5px 0 15px 15px;
 }
- ============================= */
+ /* ============================= */
 
 .clear-marginbot{
 	margin-bottom:0;

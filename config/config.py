@@ -24,7 +24,6 @@ class Settings(BaseSettings):
         env_file_required=True
     )
 
-
 settings = Settings()
 if __name__ == "__main__":
     print(settings.model_dump())
