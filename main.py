@@ -5,6 +5,7 @@ from fastapi.templating import Jinja2Templates
 from fastapi.middleware.cors import CORSMiddleware
 from routes.main import router as default_router
 from routes.dashboard import router as dashboard_router
+from routes.stats import router as stats_router
 
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
@@ -22,6 +23,7 @@ app.add_middleware(CORSMiddleware,
 
 app.include_router(default_router, prefix="", tags=["main"])
 app.include_router(dashboard_router, prefix="/dashboard", tags=["dashboard"])
+app.include_router(stats_router, prefix="/stats", tags=["stats"])
 
 
 @app.exception_handler(404)
