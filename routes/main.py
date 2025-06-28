@@ -18,16 +18,35 @@ router = APIRouter()
 router.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
-@router.get("/", response_class=HTMLResponse, status_code=HTTPStatus.OK,)
+@router.get("/", response_class=HTMLResponse, name="home")
 async def index(request: Request):
     print('Request for index page received')
     return templates.TemplateResponse('index.html', {"request": request})
 
-@router.get('/favicon.ico', status_code=HTTPStatus.OK)
-async def favicon():
-    file_name = 'favicon.ico'
-    file_path = './static/' + file_name
-    return FileResponse(path=file_path, headers={'mimetype': 'image/vnd.microsoft.icon'})
+@router.get("/about", response_class=HTMLResponse, status_code=HTTPStatus.OK, name="about")
+async def about(request: Request):
+    print('Request for about page received')
+    return templates.TemplateResponse('about.html', {"request": request})
+
+@router.get("/services", response_class=HTMLResponse, status_code=HTTPStatus.OK, name="services")
+async def services(request: Request):
+    print('Request for services page received')
+    return templates.TemplateResponse('services.html', {"request": request})
+
+@router.get("/portfolio", response_class=HTMLResponse, status_code=HTTPStatus.OK, name="portfolio")
+async def portfolio(request: Request):
+    print('Request for portfolio page received')
+    return templates.TemplateResponse('portfolio.html', {"request": request})
+
+@router.get("/pricing", response_class=HTMLResponse, status_code=HTTPStatus.OK, name="pricing")
+async def pricing(request: Request):
+    print('Request for pricing page received')
+    return templates.TemplateResponse('pricing.html', {"request": request})
+
+@router.get("/contact", response_class=HTMLResponse, status_code=HTTPStatus.OK, name="contact")
+async def contact(request: Request):
+    print('Request for contact page received')
+    return templates.TemplateResponse('contact.html', {"request": request})
 
 @router.post('/hello', response_class=HTMLResponse, status_code=HTTPStatus.OK)
 async def hello(request: Request, name: str = Form(...)):
