@@ -21,9 +21,9 @@ app.add_middleware(CORSMiddleware,
     allow_headers=["*"],  # Allows all headers, adjust as needed
 )
 
-app.include_router(default_router, prefix="", tags=["main"])
-app.include_router(dashboard_router, prefix="/dashboard", tags=["dashboard"])
-app.include_router(stats_router, prefix="/stats", tags=["stats"])
+app.include_router(default_router, prefix="", tags=["Main"])
+app.include_router(dashboard_router, prefix="/dashboard", tags=["Dashboard"])
+app.include_router(stats_router, prefix="/stats", tags=["Statistics"])
 
 
 @app.exception_handler(404)

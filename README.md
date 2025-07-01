@@ -58,3 +58,21 @@ Este servidor pode ser implantado diretamente no Azure App Service como backend 
 
 # ⚠️ Atenção: 
 ### Este projeto não possui autenticação ou persistência. É destinado apenas para testes e validação funcional.
+
+
+# ===== EXEMPLOS DE USO =====
+
+# GET /stats/basic-counts
+# GET /stats/basic-counts?year=2024
+# GET /stats/basic-counts?year=2024&month=12
+# GET /stats/basic-counts?customer_id=123
+# GET /stats/basic-counts?year=2024&month=12&customer_id=123
+
+# GET /stats/purchase-values?year=2024
+# GET /stats/products-per-purchase?month=12
+# GET /stats/customer-stats?customer_id=123
+# GET /stats/period-stats?year=2024&month=6
+
+# GET /stats/complete-summary?year=2024&month=12
+# GET /stats/available-years
+# GET /stats/available-customers
