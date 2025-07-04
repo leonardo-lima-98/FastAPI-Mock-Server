@@ -1,9 +1,8 @@
 import uuid
 from sqlalchemy import Column, String, Date, Index
-from sqlalchemy.orm import relationship, declarative_base
+from sqlalchemy.orm import declarative_base
 from sqlalchemy.dialects.postgresql import UUID
-from models.dashORM.purchase import PurchaseORM
-Base = declarative_base()
+from config import Base
 
 class CustomerORM(Base):
     __tablename__ = "customer"

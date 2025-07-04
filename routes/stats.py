@@ -330,7 +330,7 @@ def get_complete_stats_summary(
         average_products_per_customer
     ]
 
-@router.get("/yearly-stats", response_model=List[YearlyStatsResponse])
+@router.get("/yearly_stats", response_model=List[YearlyStatsResponse])
 def get_yearly_stats(
     db: Session = Depends(get_session),
     customer_id: Optional[UUID] = Query(None, description="Filtrar por ID do cliente")
@@ -366,7 +366,7 @@ def get_yearly_stats(
         for row in results
     ]
 
-@router.get("/monthly-stats", response_model=List[MonthlyStatsResponse])
+@router.get("/monthly_stats", response_model=List[MonthlyStatsResponse])
 def get_monthly_stats(
     db: Session = Depends(get_session),
     year: Optional[int] = Query(None, description="Filtrar por ano específico"),
@@ -415,7 +415,7 @@ def get_monthly_stats(
         for row in results
     ]
 
-@router.get("/customer-ranking", response_model=List[RankingCustomerAndProduct])
+@router.get("/customer_ranking", response_model=List[RankingCustomerAndProduct])
 def get_customer_ranking(
     db: Session = Depends(get_session),
     year: Optional[int] = Query(None, description="Filtrar por ano"),
@@ -459,7 +459,7 @@ def get_customer_ranking(
         for row in results
     ]
 
-@router.get("/product-ranking", response_model=List[RankingCustomerAndProduct])
+@router.get("/product_ranking", response_model=List[RankingCustomerAndProduct])
 def get_product_ranking(
     db: Session = Depends(get_session),
     year: Optional[int] = Query(None, description="Filtrar por ano"),
@@ -503,6 +503,26 @@ def get_product_ranking(
         for row in results
     ]
 
+@router.get("/years_to_purchases")
+def get_years_to_purchases(db: Session = Depends(get_session)):
+    query = (select(extract('year', Purchase.purchase_date).label('year'))
+        .distinct().select_from(Purchase).order_by('year'))
+    results = db.scalars(query).all()
+    # Formata o resultado final
+    return [y for y in results]
+
+@router.get("/month_to_purchases")
+def get_month_to_purchases(db: Session = Depends(get_session),
+    year: Optional[int] = Query(None, description="Filtrar por ano")):
+    filters = StatsFilters(year=year)
+    query = (select(extract('month', Purchase.purchase_date).label('month'))
+    .distinct().select_from(Purchase).order_by('month'))
+    query = filters.apply_purchase_filters(query)   
+    results = db.scalars(query).all()
+
+    # Formata o resultado final
+    return [y for y in results]
+    
 # ===== EXEMPLOS DE USO =====
 """
 # Obter contagens básicas sem filtros

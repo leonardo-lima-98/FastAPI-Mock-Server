@@ -1,10 +1,7 @@
 import uuid
 from sqlalchemy import Boolean, Column, Index, Numeric, String
-from sqlalchemy.orm import relationship
 from sqlalchemy.dialects.postgresql import UUID
-from config.session import Base
-
-
+from config import Base
 
 class ProductORM(Base):
     __tablename__ = "product"
